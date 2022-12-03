@@ -35,18 +35,26 @@ _EMPTY_BOARD_ = replicate _SIZE_ _EMPTY_ROW_
 
 -- Q#05
 isTied:: Board -> Bool
-isTied = undefined
+isTied [] = True
+isTied (x:xs)
+    | null x = True
+    | EMPTY `elem` x = False
+    | otherwise = isTied xs 
 
 
-_TIED_BOARD_ = undefined
+_TIED_BOARD_ = [
+    [X, O, O]
+  , [O, X, X]
+  , [O, X, O]
+  ]
 
 -- Q#06
-
-indexRowStrings = undefined
+indexRowStrings:: [String] -> [(Char, String)]
+indexRowStrings x = zip ['A'..] x
 
 -- Q#07
-
-formatLine = undefined
+formatLine:: [String] -> String
+formatLine x = _SEP_ ++ intercalate _SEP_ x
 
 -- *** Assignment 2-2 *** --
 
