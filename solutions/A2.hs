@@ -4,33 +4,37 @@ module A2 where
 
 import A1
 import Data.List (intercalate)
+import Data.Char (digitToInt)
 
 -- *** Assignment 2-1 *** --
 
 -- Q#01
-
-promptPlayer = undefined
+promptPlayer:: Player -> String
+promptPlayer p =   "Player " ++ show p ++ "'s turn: enter a row and column position (ex."
 
 -- Q#02
-
-_RANGE_ = undefined
+_RANGE_ = [1.._SIZE_]
 
 -- Q#03
+isDigit::Char -> Bool
+isDigit x = x `elem` nums
+    where 
+        nums = ['0'..'9']
 
-isDigit = undefined
-
-
-readDigit = undefined
+readDigit:: Char -> Int
+readDigit x
+    | not $ isDigit x = -1  
+    | otherwise = digitToInt x
 
 -- Q#04
 
-_EMPTY_ROW_ = undefined
+_EMPTY_ROW_ = replicate _SIZE_ EMPTY
 
 
-_EMPTY_BOARD_ = undefined
+_EMPTY_BOARD_ = replicate _SIZE_ _EMPTY_ROW_
 
 -- Q#05
-
+isTied:: Board -> Bool
 isTied = undefined
 
 
