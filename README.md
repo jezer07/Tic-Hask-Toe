@@ -12,6 +12,9 @@ The environment contains a guided Tic-Tac-Toe project, designed as a companion t
 4. Wait for the environment to build. This can take a while the first time.
 5. Select "VS Code Browser" as your editor.
 
+## Gitpod Link
+https://gitpod.io/#https://github.com/jezer07/Tic-Hask-Toe
+
 ## Build Your Project
 
 As you attend the live sessions, complete each of the assignments in the `/assignments` directory, making changes to the associated `.hs` files in the `/solutions` directory.
