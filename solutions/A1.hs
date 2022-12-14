@@ -13,11 +13,11 @@ _DISPLAY_LOGO_ :: Bool
 _DISPLAY_LOGO_ = True
 
 -- Q#03
-f:: Char -> Int
-f n = fromEnum (toUpper n) - 65
+convertRowIndex:: Char -> Int
+convertRowIndex n = fromEnum (toUpper n) - 65
 
 -- Q#04
-
+_INVALID_MOVE_:: (Int, Int)
 _INVALID_MOVE_ = (-1,-1)
 
 -- Q#05

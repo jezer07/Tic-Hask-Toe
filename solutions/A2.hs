@@ -59,12 +59,19 @@ formatLine x = _SEP_ ++ intercalate _SEP_ x
 -- *** Assignment 2-2 *** --
 
 -- Q#08
-
-isMoveInBounds = undefined
+isMoveInBounds:: Move -> Bool
+isMoveInBounds move = rowWithinBounds move && colWithinBounds move
+    where 
+        rowWithinBounds (row, _) = row >=0 && row < _SIZE_
+        colWithinBounds (_, col) = col >= 0 && col < _SIZE_ 
 
 -- Q#09
+stringToMove:: String -> Move
+stringToMove [] = _INVALID_MOVE_
+stringToMove [_] = _INVALID_MOVE_
+stringToMove (x:y:z:_) = _INVALID_MOVE_
+stringToMove (x:y:_) = (convertRowIndex x,  readDigit y)
 
-stringToMove = undefined
 
 -- Q#10
 
