@@ -74,5 +74,20 @@ stringToMove (x:y:_) = (convertRowIndex x,  readDigit y)
 
 
 -- Q#10
+replaceSquareInRow:: Player -> Int -> Row -> Row
+replaceSquareInRow player index row 
+    | index >=length row = row
+    | index < 0 = row
+    | otherwise = combined 
+        where 
+            arr = splitAt (index+1) row
+            first = fst arr
+            second = snd arr
+            combined
+                | not (null (init first)) = init first ++ [player] ++ second
+                | otherwise = player: second 
 
-replaceSquareInRow = undefined
+rsX = replaceSquareInRow  X 
+
+rsO = replaceSquareInRow  O 
+        
