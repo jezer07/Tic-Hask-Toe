@@ -8,24 +8,23 @@ import Data.List (transpose)
 -- *** Assignment 3-1 ***
 
 -- Q#01
+showInts:: [Int] -> [String]
+showInts = map show
 
-showInts = undefined
-
-
-_HEADER_ = undefined
+_HEADER_ = formatLine $ showInts _RANGE_
 
 -- Q#02
-
-showSquares = undefined
+showSquares:: [Square] -> [String]
+showSquares = map show
 
 
 -- Q#03
-
-formatRows = undefined
+formatRows:: [Row] -> [String]
+formatRows = map $ formatLine . showSquares 
 
 -- Q#04
-
-isColEmpty = undefined
+isColEmpty:: Row -> Int -> Bool
+isColEmpty row = undefined
 
 -- Q#05
 

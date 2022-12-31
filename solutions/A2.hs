@@ -13,7 +13,7 @@ promptPlayer:: Player -> String
 promptPlayer p =   "Player " ++ show p ++ "'s turn: enter a row and column position (ex."
 
 -- Q#02
-_RANGE_ = [1.._SIZE_]
+_RANGE_ = [0.._SIZE_ -1]
 
 -- Q#03
 isDigit::Char -> Bool
@@ -54,7 +54,7 @@ indexRowStrings x = zip ['A'..] x
 
 -- Q#07
 formatLine:: [String] -> String
-formatLine x = _SEP_ ++ intercalate _SEP_ x
+formatLine x = _SEP_ ++ intercalate _SEP_ x ++ _SEP_
 
 -- *** Assignment 2-2 *** --
 
