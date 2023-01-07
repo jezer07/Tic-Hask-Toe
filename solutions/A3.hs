@@ -24,24 +24,34 @@ formatRows = map $ formatLine . showSquares
 
 -- Q#04
 isColEmpty:: Row -> Int -> Bool
-isColEmpty row = undefined
+isColEmpty [] _ = False
+isColEmpty xs i
+    | i >= length xs = False
+    | i < 0 = False
+    | otherwise  = xs !! i == EMPTY
+
 
 -- Q#05
-
-dropFirstCol = undefined
-
-
-dropLastCol = undefined
+dropFirstCol:: Board -> Board
+dropFirstCol [] = []
+dropFirstCol (x:xs) = tail x : dropFirstCol xs
+    
+dropLastCol:: Board -> Board
+dropLastCol [] = []
+dropLastCol (x:xs) = init x : dropLastCol xs
 
 -- Q#06
+getDiag1:: Board -> Line
+getDiag1 [] = []
+getDiag1 (x:xs)= head x : getDiag1 (dropFirstCol xs)
+            
 
-getDiag1 = undefined
+getDiag2:: Board -> Line
+getDiag2 [] = []
+getDiag2 (x:xs) = last x : getDiag2 (dropLastCol xs)
 
-
-getDiag2 = undefined
-
-
-getAllLines = undefined
+getAllLines:: Board -> [Line]
+getAllLines board = board ++ transpose board ++ [getDiag1 board] ++ [getDiag2 board]
 
 -- *** Assignment 3-2 ***
 
