@@ -27,7 +27,7 @@ _SEP_ = ['_','|','_']
 -- *** Assignment 1-2 *** --
 
 -- Q#06
-data Square = X | O | EMPTY deriving (Eq, Show)
+data Square = X | O | E deriving (Eq, Show)
 
 
 -- Q#07
@@ -65,7 +65,7 @@ showGameState gs = case gs of
 switchPlayer p = case p of 
     X -> O
     O -> X
-    EMPTY -> EMPTY 
+    E -> E 
 
 
 -- Q#12
@@ -73,4 +73,4 @@ switchPlayer p = case p of
 showSquare sq = case sq of 
     X -> "X"
     O -> "O"
-    EMPTY -> "_" 
+    E -> "_" 

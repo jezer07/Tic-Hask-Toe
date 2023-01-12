@@ -28,7 +28,7 @@ readDigit x
 
 -- Q#04
 
-_EMPTY_ROW_ = replicate _SIZE_ EMPTY
+_EMPTY_ROW_ = replicate _SIZE_ E
 
 
 _EMPTY_BOARD_ = replicate _SIZE_ _EMPTY_ROW_
@@ -38,7 +38,7 @@ isTied:: Board -> Bool
 isTied [] = True
 isTied (x:xs)
     | null x = True
-    | EMPTY `elem` x = False
+    | E `elem` x = False
     | otherwise = isTied xs 
 
 

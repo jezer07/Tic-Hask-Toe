@@ -4,6 +4,7 @@ import A1
 import A2
 
 import Data.List (transpose)
+import System.Posix.Internals (puts)
 
 -- *** Assignment 3-1 ***
 
@@ -28,7 +29,7 @@ isColEmpty [] _ = False
 isColEmpty xs i
     | i >= length xs = False
     | i < 0 = False
-    | otherwise  = xs !! i == EMPTY
+    | otherwise  = xs !! i == E
 
 
 -- Q#05
@@ -56,16 +57,24 @@ getAllLines board = board ++ transpose board ++ [getDiag1 board] ++ [getDiag2 bo
 -- *** Assignment 3-2 ***
 
 -- Q#07
-
-putSquare = undefined
+putSquare :: Player -> Board -> Move -> Board
+putSquare _ [] _ = []
+putSquare player (x:xs) (0,c) = replaceSquareInRow player c x : xs
+putSquare player (x:xs) (r,c) = x : putSquare player xs (r-1,c) 
 
 -- Q#08
-
-prependRowIndices = undefined
+prependRowIndices:: [String] -> [String]
+prependRowIndices = map processString . indexRowStrings 
+    where 
+        processString (x,y) = x:y
 
 -- Q#09
-
-isWinningLine = undefined
+isWinningLine:: Player -> Line -> Bool
+isWinningLine _ [] = False
+isWinningLine player line = isAllPlayerSquare False line
+    where 
+        isAllPlayerSquare bool [] = bool
+        isAllPlayerSquare acc (x:xs) = x == player && isAllPlayerSquare True xs
 
 -- Q#10
 
