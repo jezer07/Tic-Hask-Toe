@@ -77,5 +77,11 @@ isWinningLine player line = isAllPlayerSquare False line
         isAllPlayerSquare acc (x:xs) = x == player && isAllPlayerSquare True xs
 
 -- Q#10
-
-isValidMove = undefined
+isValidMove:: Board -> Move -> Bool
+isValidMove [] _ = False
+isValidMove board (r,c) = go 0 board
+            where 
+                go:: Int -> Board -> Bool
+                go _ [] = False
+                go i (x:xs) =  if isMoveInBounds (r,c) && i == r then 
+                    isColEmpty x c else go (i+1) xs
