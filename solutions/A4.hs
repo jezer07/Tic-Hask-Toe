@@ -15,20 +15,20 @@ import A3 hiding (
 -- *** Assignment 4-1 *** --
 
 -- Q#01
-
+_HEADER_ :: [Int] -> [String]
 _HEADER_ = undefined
-
 -- Q#02
 
-showSquares = undefined
+showSquares:: [Square] -> [String]
+showSquares = map show
 
 -- Q#03
-
-dropFirstCol = undefined
+dropFirstCol:: Board -> Board
+dropFirstCol = map tail
 
 -- Q#04
-
-dropLastCol = undefined
+dropLastCol:: Board -> Board
+dropLastCol = map init
 
 --Q#05
 
