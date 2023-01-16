@@ -15,7 +15,7 @@ import A3 hiding (
 -- *** Assignment 4-1 *** --
 
 -- Q#01
-_HEADER_ = formatLine $ showInts _RANGE_
+_HEADER_ =  ' ' : formatLine (map show _RANGE_)
 -- Q#02
 
 showSquares:: [Square] -> [String]
