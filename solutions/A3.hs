@@ -35,13 +35,6 @@ isColEmpty [] _ = False
 isColEmpty (x:xs) 0 = x == E
 isColEmpty row i = isColEmpty (drop i row) 0
 
--- isColEmpty [] _ = False
--- isColEmpty xs i
---     | i >= length xs = False
---     | i < 0 = False
---     | otherwise  = xs !! i == E
-
-
 -- Q#05
 dropFirstCol:: Board -> Board
 dropFirstCol [] = []
