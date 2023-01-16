@@ -29,12 +29,17 @@ formatRows [] = []
 formatRows (x:xs)=  formatLine (showSquares x) : formatRows xs
 
 -- Q#04
+
 isColEmpty:: Row -> Int -> Bool
 isColEmpty [] _ = False
-isColEmpty xs i
-    | i >= length xs = False
-    | i < 0 = False
-    | otherwise  = xs !! i == E
+isColEmpty (x:xs) 0 = x == E
+isColEmpty row i = isColEmpty (drop i row) 0
+
+-- isColEmpty [] _ = False
+-- isColEmpty xs i
+--     | i >= length xs = False
+--     | i < 0 = False
+--     | otherwise  = xs !! i == E
 
 
 -- Q#05
