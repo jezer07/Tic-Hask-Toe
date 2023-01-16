@@ -10,18 +10,23 @@ import System.Posix.Internals (puts)
 
 -- Q#01
 showInts:: [Int] -> [String]
-showInts = map show
+showInts [] = []
+showInts (x:xs) = show x : showInts xs
 
-_HEADER_ = formatLine $ showInts _RANGE_
+_HEADER_:: String
+_HEADER_ = ' ' : formatLine (showInts _RANGE_)
+-- _HEADER_ = formatLine $ showInts _RANGE_
 
 -- Q#02
 showSquares:: [Square] -> [String]
-showSquares = map show
+showSquares [] = []
+showSquares (x:xs) =  show x : showSquares xs
 
 
 -- Q#03
 formatRows:: [Row] -> [String]
-formatRows = map $ formatLine . showSquares 
+formatRows [] = []
+formatRows (x:xs)=  formatLine (showSquares x) : formatRows xs
 
 -- Q#04
 isColEmpty:: Row -> Int -> Bool

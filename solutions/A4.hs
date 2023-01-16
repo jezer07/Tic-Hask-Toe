@@ -15,8 +15,7 @@ import A3 hiding (
 -- *** Assignment 4-1 *** --
 
 -- Q#01
-_HEADER_ :: [Int] -> [String]
-_HEADER_ = undefined
+_HEADER_ = formatLine $ showInts _RANGE_
 -- Q#02
 
 showSquares:: [Square] -> [String]
@@ -31,8 +30,8 @@ dropLastCol:: Board -> Board
 dropLastCol = map init
 
 --Q#05
-
-formatRows = undefined
+formatRows:: [Row] -> [String]
+formatRows =  map $ formatLine . showSquares 
 
 -- Q#06
 
