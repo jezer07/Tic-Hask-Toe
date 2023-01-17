@@ -34,8 +34,9 @@ formatRows:: [Row] -> [String]
 formatRows =  map $ formatLine . showSquares 
 
 -- Q#06
-
-isWinningLine_ = undefined
+isWinningLine:: Player -> Line -> Bool
+isWinningLine_ _ [] = False
+isWinningLine_ player line = null $ filter (\x -> x == E || x /= player) line
 
 
 -- *** Assignment 4-2 *** --

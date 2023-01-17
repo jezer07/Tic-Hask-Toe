@@ -77,7 +77,7 @@ isWinningLine _ [] = False
 isWinningLine player line = isAllPlayerSquare False line
     where 
         isAllPlayerSquare bool [] = bool
-        isAllPlayerSquare acc (x:xs) = x == player && isAllPlayerSquare True xs
+        isAllPlayerSquare acc (x:xs) = x == player && x /= E && isAllPlayerSquare True xs
 
 -- Q#10
 isValidMove:: Board -> Move -> Bool
