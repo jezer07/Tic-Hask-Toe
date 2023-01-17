@@ -34,7 +34,7 @@ formatRows:: [Row] -> [String]
 formatRows =  map $ formatLine . showSquares 
 
 -- Q#06
-isWinningLine:: Player -> Line -> Bool
+isWinningLine_:: Player -> Line -> Bool
 isWinningLine_ _ [] = False
 isWinningLine_ player line = null $ filter (\x -> x == E || x /= player) line
 
@@ -42,8 +42,10 @@ isWinningLine_ player line = null $ filter (\x -> x == E || x /= player) line
 -- *** Assignment 4-2 *** --
 
 -- Q#07
-
-isWinningLine = undefined
+isWinningLine:: Player -> Line -> Bool
+isWinningLine _ [] = False
+isWinningLine p xs = foldr (\x acc-> acc && (x == p && x /= E)) True xs
+-- isWinningLine_ player line = foldr 
 
 -- Q#08
 
