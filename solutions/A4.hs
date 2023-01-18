@@ -11,6 +11,7 @@ import A3 hiding (
   isWinningLine,
   prependRowIndices
   )
+import Foreign.Safe (Bits(xor))
 
 -- *** Assignment 4-1 *** --
 
@@ -48,20 +49,24 @@ isWinningLine p xs = foldr (\x acc-> acc && (x == p && x /= E)) True xs
 -- isWinningLine_ player line = foldr 
 
 -- Q#08
-
-hasWon = undefined
+hasWon:: Player -> Board -> Bool
+hasWon p xs = foldr (\x acc -> acc || isWinningLine p x) False $ getAllLines xs
 
 -- Q#09
+getGameState:: Board -> GameState 
+getGameState xs
+  | hasWon X xs = X_WON
+  | hasWon O xs = O_WON
+  | isTied xs = TIE
+  | otherwise = IN_PROGRESS
 
-getGameState = undefined
-
-
-playMove = undefined
+playMove :: Player -> Board -> Move -> (GameState, Board)
+playMove p b m = let move = putSquare p b m in (getGameState move, move)
 
 -- Q#10
-
-prependRowIndices = undefined
+prependRowIndices:: [String] -> [String]
+prependRowIndices xs = zipWith (:) ['A'..] xs
 
 -- Q#11
-
-formatBoard = undefined
+formatBoard:: Board -> String
+formatBoard xs = unlines $ _HEADER_ :  prependRowIndices (formatRows xs)
