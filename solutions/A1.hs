@@ -31,7 +31,7 @@ data Square = X | O | E deriving (Eq, Show)
 
 
 -- Q#07
-data GameState = X_WON | O_WON | TIE | IN_PROGRESS deriving Show
+data GameState = X_WON | O_WON | TIE | IN_PROGRESS deriving (Show, Eq)
 
 
 -- Q#08
@@ -55,7 +55,7 @@ getFirstPlayer_ x
 
 showGameState gs = case gs of 
     X_WON -> "X Won!"
-    O_WON -> "Y Won!"
+    O_WON -> "O Won!"
     TIE -> "It's a tie!"
     IN_PROGRESS -> "Game is in-progress"
 

@@ -34,12 +34,18 @@ getMove board = getLine >>= (\input ->  processMove input)
         where 
             processMove move = if isValidMove board (stringToMove move) 
                                 then return (stringToMove move) 
-                                else putStrLn "Invalid move! Try again" 
-                                >> getMove board
+                                else putStrLn "Invalid move! Try again" >> getMove board
 
 -- Q#05
 
-play = when _DISPLAY_LOGO_ 
+play board player = when _DISPLAY_LOGO_  printLogo >> 
+    printBoard board >> putStrLn (promptPlayer player) >> 
+    getMove board >>= (\move -> nextMove (playMove player board move)) 
+    where
+        nextMove (g,b) = if g == IN_PROGRESS 
+            then play b (switchPlayer player) 
+            else printBoard b >> putStrLn (showGameState g)
+             
 
 -- *** Assignment 5-2 *** --
 
