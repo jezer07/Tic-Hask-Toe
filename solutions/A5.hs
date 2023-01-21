@@ -32,15 +32,17 @@ firstPlayer = _RANDOM_BOOL_ >>= (\x-> return $ getFirstPlayer x)
 getMove:: Board -> IO Move
 getMove board = getLine >>= (\input ->  processMove input)
         where 
-            processMove move = if isValidMove board (stringToMove move) 
-                                then return (stringToMove move) 
+            processMove move = if isValidMove board converTedMove 
+                                then return converTedMove
                                 else putStrLn "Invalid move! Try again" >> getMove board
+                                    where
+                                        converTedMove = stringToMove move
 
 -- Q#05
-
+play :: Board -> Player -> IO ()
 play board player = when _DISPLAY_LOGO_  printLogo >> 
     printBoard board >> putStrLn (promptPlayer player) >> 
-    getMove board >>= (\move -> nextMove (playMove player board move)) 
+    getMove board >>= (\move -> nextMove $ playMove player board move) 
     where
         nextMove (g,b) = if g == IN_PROGRESS 
             then play b (switchPlayer player) 
@@ -50,17 +52,37 @@ play board player = when _DISPLAY_LOGO_  printLogo >>
 -- *** Assignment 5-2 *** --
 
 -- Q#07
-
-printLogoDo = undefined
+printLogoDo:: IO ()
+printLogoDo = do
+    logo <- readFile _LOGO_PATH_
+    putStrLn logo
 
 -- Q#08
-
-firstPlayerDo = undefined
+firstPlayerDo::  IO Player
+firstPlayerDo = do
+    random <- _RANDOM_BOOL_
+    return $ getFirstPlayer random
 
 -- Q#09
-
-getMoveDo = undefined
+getMoveDo:: Board -> IO Move
+getMoveDo board = do
+    input <- getLine
+    let move = stringToMove input
+    if isValidMove board move
+        then return move
+        else do 
+            putStrLn "Invalid move! Try again"
+            getMove board
 
 -- Q#10
-
-playDo = undefined
+playDo :: Board -> Player -> IO ()
+playDo board player = do
+        when _DISPLAY_LOGO_  printLogo
+        printBoard board
+        putStrLn (promptPlayer player)
+        move <- getMove board
+        let (g,b) = playMove player board move
+        if g == IN_PROGRESS 
+            then play b (switchPlayer player) 
+            else do printBoard b
+                    putStrLn (showGameState g)
