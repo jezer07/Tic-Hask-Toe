@@ -11,7 +11,7 @@ import A3 hiding (
   isWinningLine,
   prependRowIndices
   )
-import Foreign.Safe (Bits(xor))
+
 
 -- *** Assignment 4-1 *** --
 
